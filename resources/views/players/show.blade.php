@@ -5,7 +5,7 @@
 @section('content')
 
     <h2>
-        {{ $player->name }}
+        {{ $player->first_name }} {{ $player->last_name }}
     </h2>
 
     <p>
@@ -13,7 +13,8 @@
     </p>
 
     <p>
-        <a href="/teams/ {{ $player->team->id}}"> {{ $player->team->name }} </a>
+        <a href="/teams/{{ $player->team->id}}"> {{ $player->team->name }} </a>
     </p>
+
 
 @endsection

@@ -19,7 +19,9 @@ Route::post('/register', ['as' => 'store-register', 'uses' => 'RegistrationContr
 Route::get('/login', ['as' => 'login-user', 'uses' => 'LoginController@create']);
 Route::post('/login', ['as' => 'store-login', 'uses' => 'LoginController@store']);
 
-Route::get('/logout', ['as' => 'logout-user', 'uses' => 'LoginController@destory']);
+Route::get('/logout', ['as' => 'logout-user', 'uses' => 'LoginController@destroy']);
+
+Route::post('/teams/{id}/comments', ['as' => 'comments-team', 'uses' => 'CommentsController@store']);
 
 Route::get('/teams/{id}', ['as' => 'single-team', 'uses' => 'TeamsController@show']);
 

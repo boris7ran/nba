@@ -38,4 +38,9 @@ class User extends Authenticatable
     ];
 
     const STORE_RULES = ['name' => 'required', 'email' => 'required', 'password' => 'required | confirmed'];
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

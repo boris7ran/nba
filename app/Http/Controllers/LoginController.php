@@ -29,10 +29,10 @@ class LoginController extends Controller
         return redirect()->route('login-user');
     }
 
-    public function destory()
+    public function destroy()
     {
         auth()->logout();
 
-        return redirect('/login');
+        return redirect()->route('login-user');
     }
 }

@@ -9,6 +9,10 @@ use App\Comment;
 
 class CommentsController extends Controller
 {
+    public function __construct() {
+        $this->middleware('forbidden-words', ['only' => 'store']);;
+    }
+
     public function store($teamId)
     {
         $comment = new Comment;

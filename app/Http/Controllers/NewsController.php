@@ -12,7 +12,9 @@ class NewsController extends Controller
     {
         $news = News::without('teams')->paginate(10);
 
-        return view('news.index', compact('news'));
+        $newsTeams = $this->teamsWithNews();
+
+        return view('news.index', compact('news', 'newsTeams'));
     }
 
     public function show($id)
@@ -53,6 +55,20 @@ class NewsController extends Controller
         $team = Team::without('players', 'comments')->where('name', $teamName)->first();
         $news = $team->news()->paginate(10);
 
-        return view('news.index', compact('news'));
+        $newsTeams = $this->teamsWithNews();
+
+        return view('news.index', compact('news', 'newsTeams'));
+    }
+    public function teamsWithNews()
+    {
+        $teams = Team::all();
+        $newsTeams = [];
+        foreach ($teams as $team) {
+            if ($team->news){
+                array_push($newsTeams, $team);
+            }
+        }
+
+        return $newsTeams;
     }
 }

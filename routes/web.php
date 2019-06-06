@@ -21,6 +21,8 @@ Route::post('/login', ['as' => 'store-login', 'uses' => 'LoginController@store']
 
 Route::get('/logout', ['as' => 'logout-user', 'uses' => 'LoginController@destroy']);
 
+Route::get('/verify/{id}', ['as' => 'verify-user', 'uses' => 'RegistrationController@verify']);
+
 Route::post('/teams/{id}/comments', ['as' => 'comments-team', 'uses' => 'CommentsController@store']);
 
 Route::get('/teams/{id}', ['as' => 'single-team', 'uses' => 'TeamsController@show']);

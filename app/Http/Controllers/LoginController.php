@@ -23,7 +23,11 @@ class LoginController extends Controller
         if (auth()->attempt(['name' => $name, 'password' => $password])) {
             
             // Authentication passed...
-            return redirect()->route('all-teams');
+            if (auth()->user()->is_verified){
+                return redirect()->route('all-teams');
+
+            }
+            $this->destroy();
         }
 
         return redirect()->route('login-user');

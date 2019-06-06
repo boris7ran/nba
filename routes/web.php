@@ -21,6 +21,9 @@ Route::post('/login', ['as' => 'store-login', 'uses' => 'LoginController@store']
 
 Route::get('/logout', ['as' => 'logout-user', 'uses' => 'LoginController@destroy']);
 
+Route::get('/news/create', ['as' => 'create-news', 'uses' => 'NewsController@create']);
+Route::post('/news', ['as' => 'store-news', 'uses' => 'NewsController@store']);
+
 Route::get('/news', ['as' => 'all-news', 'uses' => 'NewsController@index']);
 Route::get('/news/{id}', ['as' => 'single-news', 'uses' => 'NewsController@show']);
 Route::get('/news/team/{name}', ['as' => 'team-news', 'uses' => 'NewsController@teamNews']);

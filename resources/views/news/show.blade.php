@@ -12,5 +12,9 @@
     <p>{{ $news->user->name }}</p>
 
     <p>{{ $news->user->email }}</p>
-    {{ dd($news) }}
+
+    @foreach ($news->teams as $team)
+        <p><a href="/news/team/{{ $team->name }}">{{ $team->name }}</a></p>
+    @endforeach
+
 @endsection

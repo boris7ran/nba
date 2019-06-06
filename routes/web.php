@@ -23,6 +23,7 @@ Route::get('/logout', ['as' => 'logout-user', 'uses' => 'LoginController@destroy
 
 Route::get('/news', ['as' => 'all-news', 'uses' => 'NewsController@index']);
 Route::get('/news/{id}', ['as' => 'single-news', 'uses' => 'NewsController@show']);
+Route::get('/news/team/{name}', ['as' => 'team-news', 'uses' => 'NewsController@teamNews']);
 
 Route::get('/verify/{id}', ['as' => 'verify-user', 'uses' => 'RegistrationController@verify']);
 

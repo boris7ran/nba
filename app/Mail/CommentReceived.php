@@ -11,14 +11,15 @@ class CommentReceived extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $comment;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($comment)
     {
-        //
+        $this->comment = $comment;
     }
 
     /**
@@ -28,6 +29,6 @@ class CommentReceived extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->view('emails.comment-received');
     }
 }

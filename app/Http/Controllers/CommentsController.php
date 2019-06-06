@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Team;
 use App\Comment;
+use App\Mail\CommentReceived;
 
 class CommentsController extends Controller
 {
@@ -22,6 +23,8 @@ class CommentsController extends Controller
         $comment->team_id = $teamId;
     
         $comment->save();
+
+        \Mail::to($comment->team)->send(new CommentReceived($comment));
         
         return redirect()->route('single-team', ['id' => $teamId]);
     }
